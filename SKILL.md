@@ -1,6 +1,6 @@
 # RIPR — Research, Iterate, Peer Review
 
-**By Gripsy** | Version 2.1.0
+**By Gripsy** | Version 2.2.0
 
 > "Never publish something you'll regret. Multi-LLM fact-checking for content."
 
@@ -51,48 +51,44 @@ Add vertical expertise to any persona for domain-specific validation:
 
 ## Context Gathering (Interactive Mode)
 
-When RIPR is invoked without sufficient context, **ask clarifying questions** before proceeding:
+When RIPR is invoked without sufficient context, **ask clarifying questions ONE AT A TIME** — conversational style, not a batch of questions.
 
-### Required Context (Always Needed)
-1. **Topic/Content:** What are we fact-checking or creating?
-2. **Platform:** LinkedIn, X, Medium, internal doc, presentation?
+### Question Sequence
 
-### Conditional Questions (Ask When Relevant)
+Ask these in order, waiting for each response before asking the next:
 
-**If persona is unclear:**
-> "Should I approach this as a technical content creator (default) or as a business consultant giving strategic insights?"
+1. **Platform** → "What platform — LinkedIn, X, Medium, or internal doc?"
+2. **Persona** → "Tech content creator (default) or business consultant lens?"
+3. **Vertical** *(only if consultant)* → "Any industry focus? (semiconductors, cloud, mining, fintech...)"
+4. **Audience** *(if still unclear)* → "Who's the target reader?"
 
-**If consultant persona selected:**
-> "Any specific industry vertical I should focus on? (e.g., semiconductors, cloud, mining, fintech)"
-
-**If audience is unclear:**
-> "Who's the target audience? (e.g., tech practitioners, executives, general public, investors)"
-
-**If stakes are high:**
-> "Is this for a high-visibility publication or presentation? (I'll apply extra scrutiny)"
-
-**If topic is niche:**
-> "Should I prioritize any specific sources or publications for this domain?"
-
-### Example Flow
+### Example Flow (One Question at a Time)
 
 ```
 User: "RIPR this piece on AI in mining"
 
-Agent: "Got it. A few quick questions:
-1. Platform — LinkedIn post, Medium article, or something else?
-2. Lens — Technical content creator (practitioner view) or business consultant (executive strategy)?
-3. Audience — Mining executives, tech folks, or general readers?"
+Agent: "What platform — LinkedIn, X, Medium, or internal doc?"
 
-User: "LinkedIn, consultant lens, mining execs"
+User: "LinkedIn"
 
-Agent: [Proceeds with RIPR using Business Consultant persona + Mining vertical]
+Agent: "Tech content creator lens, or business consultant (executive strategy)?"
+
+User: "Consultant"
+
+Agent: "Any specific industry vertical — mining, cloud, semiconductors?"
+
+User: "Mining"
+
+Agent: "Perfect. Mining exec audience, consultant lens, LinkedIn format. Starting RIPR..."
 ```
 
 ### Skip Questions When
-- User explicitly provides context ("RIPR this LinkedIn post as a tech writer")
+- User explicitly provides context upfront ("RIPR this LinkedIn post as a tech writer for mining execs")
 - Content is clearly simple/low-stakes
 - User says "just RIPR it" or "quick check" (use defaults)
+
+### One-Shot Override
+If user provides all context in their initial request, confirm and proceed — no redundant questions.
 
 ---
 
