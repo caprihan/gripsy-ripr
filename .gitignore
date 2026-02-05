@@ -1,0 +1,14 @@
+# Private config with your webhook URLs
+config.json
+
+# OS files
+.DS_Store
+._*
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
